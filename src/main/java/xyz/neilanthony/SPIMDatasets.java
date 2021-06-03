@@ -1,0 +1,95 @@
+/*
+ * To the extent possible under law, the ImageJ developers have waived
+ * all copyright and related or neighboring rights to this tutorial code.
+ *
+ * See the CC0 1.0 Universal license for details:
+ *     http://creativecommons.org/publicdomain/zero/1.0/
+ */
+
+package xyz.neilanthony;
+
+import java.io.IOException;
+import net.imagej.ImageJ;
+import net.imagej.ops.OpService;
+import net.imglib2.type.numeric.RealType;
+import org.scijava.command.Command;
+import org.scijava.plugin.Parameter;
+import org.scijava.plugin.Plugin;
+import org.scijava.ui.UIService;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.application.Application;
+import javax.swing.ImageIcon;
+import javax.swing.WindowConstants;
+import javax.xml.parsers.ParserConfigurationException;
+import loci.formats.FormatException;
+import org.scijava.log.LogService;
+import org.scijava.ui.UserInterface;
+import org.xml.sax.SAXException;
+
+/**
+ * This example illustrates how to create an ImageJ {@link Command} plugin.
+ * <p>
+ * The code here is a simple Gaussian blur using ImageJ Ops.
+ * </p>
+ * <p>
+ * You should replace the parameter fields with your own inputs and outputs,
+ * and replace the {@link run} method implementation with your own logic.
+ * </p>
+ */
+@Plugin(type = Command.class, menuPath = "Plugins>EmoryICI>Set SPIM Metadata")
+public class SPIMDatasets<T extends RealType<T>> implements Command {
+
+    
+    @Parameter
+    private LogService logService;
+    
+    //@Parameter
+    //private Dataset currentData;
+
+    @Parameter
+    private UIService uiService;
+
+    @Parameter
+    private OpService opService;
+
+    @Override
+    public void run() {
+        
+        final UserInterface ui = uiService.getDefaultUI();
+        // open GUI window
+        SPIMDatasetJFrame dsFrame = null;
+        dsFrame = new SPIMDatasetJFrame(ui);
+//            AbbeFrame = new OpenAbbeJFrame();
+        dsFrame.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
+        dsFrame.setLocation(64, 64);
+        
+        //  TODO - make icon images of all sizes
+        //ImageIcon icon = new ImageIcon(AbbeFrame.getClass().getResource("icon.png"));
+        //AbbeFrame.setIconImage(icon.getImage());
+
+        //AbbeFrame.invalidate();
+        //AbbeFrame.repaint();
+        dsFrame.setVisible(true);
+    }
+
+    /**
+     * This main function serves for development purposes.
+     * It allows you to run the plugin immediately out of
+     * your integrated development environment (IDE).
+     *
+     * @param args whatever, it's ignored
+     * @throws Exception
+     */
+    public static void main(final String... args) throws Exception {
+        // create the ImageJ application context with all available services
+        System.setProperty("scijava.log.level", "info");
+        final ImageJ ij = new ImageJ();
+        ij.ui().showUI();
+        // invoke the plugin
+        ij.command().run(SPIMDatasets.class, true);
+
+    }
+
+}

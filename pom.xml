@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+		http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>org.scijava</groupId>
+		<artifactId>pom-scijava</artifactId>
+		<version>30.0.0</version>
+		<relativePath />
+	</parent>
+
+	<groupId>xyz.neilanthony</groupId>
+	<artifactId>OpenAbberiorFiles</artifactId>
+	<version>0.1.0-SNAPSHOT</version>
+
+	<name>spim-create-xml-dataset</name>
+	<description>A Maven project for opening Abberior .obf and .msr files.</description>
+	<url>https://github.com/nranthony/abberior-files</url>
+	<inceptionYear>2021</inceptionYear>
+	<organization>
+		<name>Emory Integrated Cellular Imaging</name>
+		<url>https://www.cores.emory.edu/ici/</url>
+	</organization>
+	<licenses>
+		<license>
+			<name>Simplified BSD License</name>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
+	<developers>
+		<developer>
+			<id>nranthony</id>
+			<name>Neil Anthony</name>
+			<url>neilanthony.xyz</url>
+			<roles>
+				<role>developer</role>
+			</roles>
+		</developer>
+	</developers>
+
+	<contributors>
+		<contributor>
+			<name>Neil Anthony</name>
+			<url>neilanthony.xyz</url>
+			<properties><id>nranthony</id></properties>
+		</contributor>
+	</contributors>
+
+	<mailingLists>
+		<mailingList>
+                        <name>N/A</name>
+			<archive>N/A</archive>
+		</mailingList>
+	</mailingLists>
+        
+	<scm>
+		<connection>scm:git:git://github.com/nranthony/abberior-files</connection>
+		<developerConnection>scm:git:git@github.com:nranthony/abberior-files</developerConnection>
+		<tag>HEAD</tag>
+		<url>https://github.com/nranthony/abberior-files</url>
+	</scm>
+	<issueManagement>
+		<system>GitHub Issues</system>
+		<url>https://github.com/nranthony/abberior-files/issues</url>
+	</issueManagement>
+	<ciManagement>
+		<system>None</system>
+	</ciManagement>
+        
+        <properties>
+		<package-name>xyz.neilanthony.OpenAbberior</package-name>
+		<main-class>xyz.neilanthony.OpenAbberior</main-class>
+		<license.licenseName>bsd_2</license.licenseName>
+		<license.copyrightOwners>Neil Anthony</license.copyrightOwners>
+        </properties>
+
+        <repositories>
+		<repository>
+			<id>scijava.public</id>
+			<url>https://maven.scijava.org/content/groups/public</url>
+		</repository>
+	</repositories>
+
+	<dependencies>
+		<dependency>
+			<groupId>net.imagej</groupId>
+			<artifactId>imagej</artifactId>
+		</dependency>
+                <!-- https://mvnrepository.com/artifact/ome/bioformats_package -->
+                <dependency>
+                        <groupId>ome</groupId>
+                        <artifactId>bioformats_package</artifactId>
+                        <version>6.6.1</version>
+                        <type>pom</type>
+                        <exclusions>
+                                <exclusion>
+                                        <groupId>xpp3</groupId>
+                                        <artifactId>xpp3</artifactId>
+                                </exclusion>
+                                <exclusion>
+                                        <groupId>xalan</groupId>
+                                        <artifactId>xalan</artifactId>
+                                </exclusion>
+                        </exclusions> 
+                </dependency>
+                <!--<dependency>
+                        <groupId>com.google.guava</groupId>
+                        <artifactId>guava</artifactId>
+                        <version>21.0</version>
+                </dependency>-->
+                <!--<dependency>
+                        <groupId>net.coobird</groupId>
+                        <artifactId>thumbnailator</artifactId>
+                        <version>[0.4, 0.5)</version>
+                </dependency>-->
+                <!-- https://mvnrepository.com/artifact/org.bytedeco/javacv -->
+                <!--<dependency>
+                        <groupId>org.bytedeco</groupId>
+                        <artifactId>javacv</artifactId>
+                        <version>1.5.5</version>
+                </dependency>-->
+                <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-math3 -->
+                <!--<dependency>
+                        <groupId>org.apache.commons</groupId>
+                        <artifactId>commons-math3</artifactId>
+                        <version>3.6.1</version>
+                </dependency>-->
+
+	</dependencies>
+
+</project>
