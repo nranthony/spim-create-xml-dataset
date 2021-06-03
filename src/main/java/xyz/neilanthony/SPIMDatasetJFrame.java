@@ -95,23 +95,31 @@ class SPIMDatasetJFrame extends javax.swing.JFrame {
 
             this.jTextField1.setText(filepath);
 
-            reader.setMetadataStore(omeMeta);
+//            reader.setMetadataStore(omeMeta);
+//            try {
+//                reader.setId(filepath);
+//            } catch (FormatException ex) {
+//                Logger.getLogger(SPIMDatasetJFrame.class.getName()).log(Level.SEVERE, null, ex);
+//            } catch (IOException ex) {
+//                Logger.getLogger(SPIMDatasetJFrame.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+            ImagePlus[] imps = null;
             try {
-                reader.setId(filepath);
+                imps = openImagePlus(filepath);
             } catch (FormatException ex) {
                 Logger.getLogger(SPIMDatasetJFrame.class.getName()).log(Level.SEVERE, null, ex);
             } catch (IOException ex) {
                 Logger.getLogger(SPIMDatasetJFrame.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
-            try {
-                ImagePlus[] imp = openImagePlus(filepath);
-            } catch (FormatException ex) {
-                Logger.getLogger(SPIMDatasetJFrame.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (IOException ex) {
-                Logger.getLogger(SPIMDatasetJFrame.class.getName()).log(Level.SEVERE, null, ex);
+            ImagePlus imp = null;
+            int[] dims = null;
+            for (int j = 0; j < imps.length; j++) {
+                imp = imps[j];
+                dims = imp.getDimensions();
+                System.out.println(String.format("ImagePlus %s %d x %d x %d px",
+                        imp.getTitle(), dims[0], dims[1], dims[2]));
+                
             }
-            
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
